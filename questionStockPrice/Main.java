@@ -63,6 +63,7 @@ class Result{
 public class Main {
     public static void main(String[] args) {
         //定义一个列表存储价格
+//        Map<Integer,Integer> pricesList = new TreeMap<>();
         List<Info> priceList = new ArrayList<>();
         //结果列表
         List<Result> resultsList = new ArrayList<>();
@@ -81,6 +82,7 @@ public class Main {
                 tempinfo.timestamp = Integer.parseInt(strings[1]);
                 tempinfo.price = Integer.parseInt(strings[2]);
                 priceList.add(tempinfo);
+//                pricesList.put(tempinfo.timestamp,tempinfo.price);
             }
             else if(strings[0].equals("R")){
                 //删除endgtime之前的记录
@@ -88,6 +90,9 @@ public class Main {
                 while(priceList.size() > 0 && priceList.get(0).getTimestamp() <= endtime){
                     priceList.remove(0);
                 }
+//                for(int j = 1; j <= endtime; j++){
+//                    pricesList.remove(j);
+//                }
             }
             else{
                 Result result = new Result();

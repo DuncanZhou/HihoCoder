@@ -142,6 +142,7 @@ public class Main{
         int length = s.length();
         StringBuffer sb = new StringBuffer(s);
         for(int i = 0; i <= length; i++){
+            //暴力搜索
             sb.insert(i, 'A');
             f(sb.toString());
             sb.setCharAt(i, 'B');
