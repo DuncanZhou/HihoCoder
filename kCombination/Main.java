@@ -17,6 +17,7 @@ public class Main {
     //求n个数中k个数的组合
     public static void kCombination(int index,int k,int[] arrary){
         if(k == 1){
+            //在剩下来的数中选取最后一个加入其中
             for(int i = index; i < arrary.length; i++) {
                 tempArr.add(arrary[i]);
                 System.out.println(tempArr.toString());
