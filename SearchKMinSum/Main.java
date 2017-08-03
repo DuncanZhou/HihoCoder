@@ -1,20 +1,19 @@
 package SearchKMinSum;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Created by duncan on 17-8-3.
  */
 
-//在有序数组中搜索m组k个和最小的数
+//在有序数组中搜索m组k个和最小的数,存储下标
 public class Main {
     public void Search(int[] array,int m,int k){
         ArrayList<Integer> tempArr = new ArrayList<>();
         //array数组已是有序数组
         //第一个解先加入
         for(int i = 0; i < k; i++)
-            tempArr.add(array[i]);
+            tempArr.add(i);
         int count = 1;
         System.out.println(tempArr.toString());
         int newdelta = 0;
@@ -31,12 +30,12 @@ public class Main {
                         for(int ss = start - 1; ss >= j; ss--){
                             if(array[s] - array[ss] <= newdelta && array[s] - array[ss] > olddelta) {
                                 //有一个可行解
-                                tempArr.remove((Object)array[ss]);
-                                tempArr.add(array[s]);
+                                tempArr.remove((Object)ss);
+                                tempArr.add(s);
                                 System.out.println(tempArr.toString());
                                 count++;
-                                tempArr.remove((Object)array[s]);
-                                tempArr.add(array[ss]);
+                                tempArr.remove((Object)s);
+                                tempArr.add(ss);
                                 if(count == m)
                                     return;
                             }
@@ -45,18 +44,18 @@ public class Main {
                         }
                     }
                     //用start来替换
-                    tempArr.remove((Object)array[j]);
-                    tempArr.add(array[i]);
+                    tempArr.remove((Object)j);
+                    tempArr.add(i);
                     System.out.println(tempArr.toString());
                     count++;
                     if(count == m)
                         return;
-                    tempArr.remove((Object)array[i]);
-                    tempArr.add(array[j]);
+                    tempArr.remove((Object)i);
+                    tempArr.add(j);
                 }
                 //重新更新tempArr
-                tempArr.remove((Object)array[i - k]);
-                tempArr.add(array[start]);
+                tempArr.remove((Object)(i - k));
+                tempArr.add(start);
             }
         }
     }
